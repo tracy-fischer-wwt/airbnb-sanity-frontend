@@ -80,3 +80,45 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Running Tests Locally
+
+This project does not have an automated test suite yet: `package.json` has no `test` script, so `npm test` will fail. Until one is added, use these checks to verify your changes locally.
+
+1. Install the dependencies (once):
+
+   ```bash
+   npm i
+   ```
+
+2. Make sure the production build compiles. This catches syntax errors, bad imports and problems in `getServerSideProps` pages:
+
+   ```bash
+   npm run build
+   ```
+
+3. Manually check the app in the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+   Then open [http://localhost:3000](http://localhost:3000) and click through the home page, a property page and the map.
+
+### Adding automated tests
+
+If you want to add tests, [Jest](https://jestjs.io/) with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) works well with Next.js. After installing them as dev dependencies, add a script to `package.json`:
+
+```json
+"scripts": {
+  "test": "jest"
+}
+```
+
+You can then run the tests with:
+
+```bash
+npm test
+# run a single file
+npm test -- path/to/file.test.js
+```
