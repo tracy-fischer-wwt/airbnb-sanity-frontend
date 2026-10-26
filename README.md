@@ -80,3 +80,55 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Running Tests Locally
+
+This project does not yet have an automated test suite: `package.json` has no `test` script, so `npm test` will fail with "missing script: test". Until one is added, you can check your changes locally like this:
+
+1. Install dependencies (once):
+
+   ```bash
+   npm i
+   ```
+
+2. Make sure the production build compiles. This catches syntax and import errors in every page and component:
+
+   ```bash
+   npm run build
+   ```
+
+3. Check the app by hand. Start the dev server and click through the home page and a property page:
+
+   ```bash
+   npm run dev
+   ```
+
+   Then open [http://localhost:3000](http://localhost:3000). The pages fetch data from Sanity, so you need network access to the Sanity project configured in `sanity.js`. The cluster map also needs a Google Maps API key.
+
+### Adding automated tests
+
+If you want to add tests, [Jest](https://jestjs.io/) with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) is a common choice for Next.js apps:
+
+```bash
+npm i -D jest babel-jest @testing-library/react @testing-library/jest-dom
+```
+
+Then add a script to `package.json`:
+
+```json
+"scripts": {
+  "test": "jest"
+}
+```
+
+Once that is in place, run the tests with:
+
+```bash
+npm test
+# run a single file
+npx jest path/to/file.test.js
+# re-run on file changes
+npx jest --watch
+```
+
+Update this section when a test setup is added to the repo.
