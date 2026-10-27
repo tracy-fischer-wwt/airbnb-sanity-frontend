@@ -80,3 +80,49 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Running Tests Locally
+
+This project does not include an automated test suite yet: `package.json` has no `test` script and no test runner (such as Jest) is installed, so `npm test` will fail with a "missing script" error.
+
+Until tests are added, you can check your changes locally like this:
+
+1. Install the dependencies (once):
+
+   ```bash
+   npm i
+   ```
+
+2. Make sure the production build compiles. This catches syntax and import errors in the pages and components:
+
+   ```bash
+   npm run build
+   ```
+
+3. Manually check the app in the browser with the dev server:
+
+   ```bash
+   npm run dev
+   ```
+
+   Then open [http://localhost:3000](http://localhost:3000) and click through the home page, a property page and the map.
+
+### Adding automated tests
+
+If you want to add tests, a common setup for Next.js is [Jest](https://jestjs.io/) with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/). After installing and configuring it, add a script to `package.json`:
+
+```json
+"scripts": {
+  "test": "jest"
+}
+```
+
+You will then be able to run the tests with:
+
+```bash
+npm test
+# run a single file
+npm test -- path/to/file.test.js
+```
+
+Please update this section when a test runner is added.
